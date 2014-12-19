@@ -7,7 +7,7 @@
 		<style>
 			body {
 				font-family: Monospace;
-				background-color: #000000;
+				background-color: #d4d4d4;
 				margin: 0px;
 				overflow: hidden;
 			}
@@ -36,7 +36,7 @@
 
 			var loader = new THREE.ColladaLoader();
 			loader.options.convertUpAxis = true;
-			loader.load( 'two.dae', function ( collada ) {
+			loader.load( 'lowpoly.dae', function ( collada ) {
 
 				dae = collada.scene;
 
@@ -109,7 +109,7 @@
 
 	var directionalLight = new THREE.DirectionalLight(/*Math.random() * 0xffffff*/0xffffff );
 				directionalLight.position.x = 0.5;
-				directionalLight.position.y = 0.5;
+				directionalLight.position.y = 0.7;
 				directionalLight.position.z = 0.5;
 				directionalLight.position.normalize();
 				scene.add( directionalLight );
@@ -153,21 +153,23 @@
 
 			function render() {
 
-				var timer = Date.now() * 0.0005;
+				var timer = Date.now() * 0.0004;
 /*
 				camera.position.x = Math.cos( timer ) * 10;
 				camera.position.y = 5;
 				camera.position.z = Math.sin( timer ) * 10;
 */
 				camera.position.x = 10;
-				camera.position.y = 15 + (Math.cos( timer ) * 10);
-				camera.position.z = 10;
+				camera.position.y = 12 + (Math.cos( timer ) * 10);
+				camera.position.z = 15;
 
 				camera.lookAt( scene.position );
 
+/*
 				particleLight.position.x = Math.sin( timer * 4 ) * 3009;
 				particleLight.position.y = Math.cos( timer * 5 ) * 4000;
 				particleLight.position.z = Math.cos( timer * 4 ) * 3009;
+				*/
 
 				THREE.AnimationHandler.update( clock.getDelta() );
 
